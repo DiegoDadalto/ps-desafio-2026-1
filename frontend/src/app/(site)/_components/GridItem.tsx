@@ -1,17 +1,19 @@
 import Image from "next/image";
-import testeImg from '@/assets/img/teste.png';
 import styles from './griditem.module.css'
+import { sportsItemType } from "@/types/sportsItem";
 
-export default function GridItem() {
+export default function GridItem(props: sportsItemType) {
     return <div className={styles.gridItem}>
-        <Image src={testeImg}
-            alt="Accessory image" />
+        <Image src={props.image}
+            alt={props.name}
+            width={180}
+            height={180} />
         <div className={styles.productInfo}>
             <div className={styles.nameAmount}>
-                <p className={styles.productName}>Tênis De Corrida Esportivos De Carbono Com Sola Macia, Tênis</p>
-                <p className={styles.amount}>Quantidade: 437</p>
+                <p className={styles.productName}>{props.name}</p>
+                <p className={styles.amount}>{props.amount}</p>
             </div>
-            <p className={styles.price}>R$79,99</p>
+            <p className={styles.price}>{props.price}</p>
         </div>
         <div className={styles.buttons}>
             <button className={styles.expandInfo}>Informações</button>

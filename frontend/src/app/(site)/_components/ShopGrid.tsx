@@ -17,6 +17,7 @@ export default function ShopGrid() {
 
             if (response) {
                 setSportsItem(response as sportsItemType[])
+                console.log(response);
             }
             else {
                 console.error(error?.message);
@@ -27,6 +28,7 @@ export default function ShopGrid() {
         getSportsItem();
 
     }, [])
+
 
     return <div className={styles.shopGrid}>
         {sportsItem.map((equipment) => (

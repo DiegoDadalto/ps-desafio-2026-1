@@ -1,4 +1,4 @@
-import { CategoryType } from "./category";
+import { categoryType } from "./category";
 
 export type sportsItemType = {
     id: string;
@@ -8,5 +8,5 @@ export type sportsItemType = {
     releaseYear: number;
     image: string;
     amount: number;
-    category: CategoryType;
+    category: categoryType;
 }
