@@ -10,7 +10,7 @@ import {
 } from '@/components/dialog'
 import FormFieldsCategory from './form-fields-category'
 import { categoryType } from '@/types/category'
-import SkeletonFormFieldsCategory from './skeleton-category'
+//import SkeletonFormFieldsCategory from './skeleton-category'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'

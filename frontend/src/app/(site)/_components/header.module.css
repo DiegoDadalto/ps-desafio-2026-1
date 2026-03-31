@@ -1,0 +1,22 @@
+div.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: orange;
+    height: 8vh;
+    width: 100%;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.clickable {
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    background-color: white;
+}
