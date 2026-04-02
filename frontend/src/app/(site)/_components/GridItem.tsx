@@ -6,18 +6,22 @@ export default function GridItem(props: sportsItemType) {
     return <div className={styles.gridItem}>
         <Image src={props.image}
             alt={props.name}
-            width={180}
+            width={300}
             height={180} />
         <div className={styles.productInfo}>
             <div className={styles.nameAmount}>
                 <p className={styles.productName}>{props.name}</p>
-                <p className={styles.amount}>{props.amount}</p>
+                <p className={styles.amount}>Em estoque: {props.amount}</p>
             </div>
-            <p className={styles.price}>{props.price}</p>
+            <p className={styles.price}>R${props.price.toLocaleString()}</p>
         </div>
         <div className={styles.buttons}>
             <button className={styles.expandInfo}>Informações</button>
-            <button className={styles.addToCart}>Comprar</button>
+            {(props.amount > 0) ? (
+                <button className={styles.addToCart}>Comprar</button>
+            ) : (
+                <button className={styles.outOfStock} disabled>Esgotado</button>
+            )}
         </div>
     </div>
 }
