@@ -11,14 +11,8 @@
 }
 
 .sidebar div:hover {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-}
-
-.sidebar div::before {
-    width: 3px;
-    height: 34px;
-    background-color: orange;
 }
 
 .selectedButton {

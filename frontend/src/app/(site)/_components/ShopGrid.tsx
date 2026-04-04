@@ -7,7 +7,11 @@ import GridItem from "./GridItem";
 // import Sidebar from "./Sidebar";
 import styles from "./shopgrid.module.css";
 
-export default function ShopGrid() {
+interface Props {
+    selected: string | null;
+}
+
+export default function ShopGrid({ selected }: Props) {
 
     const [sportsItem, setSportsItem] = useState<sportsItemType[]>([]);
 
@@ -30,7 +34,11 @@ export default function ShopGrid() {
 
 
     return <div className={styles.shopGrid}>
-        {sportsItem.map((equipment) => (
+        {sportsItem.filter((equipment) => {
+            if (!selected) return true;
+            console.log(`Comparando ${equipment.category.id} com ${selected}`)
+            return equipment.category.id == selected
+        }).map((equipment) => (
             <GridItem key={equipment.id} {...equipment} />
         ))}
     </div>

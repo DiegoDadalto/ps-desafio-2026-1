@@ -3,13 +3,16 @@
 import { useState, useEffect } from "react";
 import { api } from "@/services/api";
 import { categoryType } from "@/types/category";
-import styles from "./sidebar.module.css";
+import styles from "./sidebarButtons.module.css";
 
-export default function Sidebar() {
+interface Props {
+    selected: string
+    selection: (id: string) => void
+}
 
+export default function SidebarButtons({ selected, selection }: Props) {
     const [category, setCategory] = useState<categoryType[]>([]);
-    const [selectedButton, setSelectedButton] = useState('');
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState<boolean>(false);
 
     useEffect(() => {
         async function getCategory() {
@@ -31,11 +34,12 @@ export default function Sidebar() {
     return <div className={styles.sidebar}>
         {category.map((categories) => (
             <div
+                key={categories.id}
                 onClick={() => {
-                    setSelectedButton(categories.id)
+                    selection(categories.id)
                     setActive(!active);
                 }}
-                className={(selectedButton == categories.id) && !active ?
+                className={(selected == categories.id) && !active ?
                     styles.selectedButton : ''}>{categories.name}</div>
         ))}
     </div>

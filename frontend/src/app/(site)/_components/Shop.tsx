@@ -1,10 +1,15 @@
-import Sidebar from "./Sidebar";
+'use client'
 import ShopGrid from "./ShopGrid";
 import styles from "./shop.module.css";
+import { useState } from "react";
+import SidebarButtons from "./SidebarButtons";
 
 export default function Shop() {
+    const [selectedButton, setSelectedButton] = useState('');
+    const [active, setActive] = useState(null);
+
     return <div className={styles.shop}>
-        <Sidebar />
-        <ShopGrid />
+        <SidebarButtons selected={selectedButton} selection={setSelectedButton} />
+        <ShopGrid selected={selectedButton} />
     </div>
 }
