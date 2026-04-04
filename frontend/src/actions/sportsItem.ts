@@ -24,7 +24,7 @@ export async function updateSportsItem(form: FormData) {
 }
 
 export async function destroySportsItem(id: string) {
-    const res = await api('DELETE', `/equipments/${id}`, { data: form });
+    const res = await api('DELETE', `/equipments/${id}`);
 
     if (!res.error) {
         revalidatePath('/admin/artigos-esportivos')

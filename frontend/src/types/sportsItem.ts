@@ -5,7 +5,7 @@ export type sportsItemType = {
     name: string;
     brand: string;
     price: number;
-    releaseYear: number;
+    year: number;
     image: string;
     amount: number;
     category: categoryType;

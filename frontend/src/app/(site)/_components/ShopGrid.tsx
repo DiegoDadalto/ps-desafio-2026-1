@@ -4,7 +4,7 @@ import { sportsItemType } from "@/types/sportsItem";
 import { useEffect, useState } from "react";
 import { api } from "@/services/api";
 import GridItem from "./GridItem";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 import styles from "./shopgrid.module.css";
 
 export default function ShopGrid() {
@@ -17,7 +17,6 @@ export default function ShopGrid() {
 
             if (response) {
                 setSportsItem(response as sportsItemType[])
-                console.log(response);
             }
             else {
                 console.error(error?.message);

@@ -25,7 +25,7 @@ export default async function ListSportsItems() {
 
   useEffect(() => {
     async function getSportsItems() {
-      const { response, error } = await api('GET', '/artigos-esportivos');
+      const { response, error } = await api('GET', '/equipments');
 
       if (response) {
         setSportsItems(response as sportsItemType[])
@@ -39,6 +39,14 @@ export default async function ListSportsItems() {
     getSportsItems();
 
   }, [])
+
+  if (!sportsItems) {
+    return (
+      <DashboardContainer className="text-destructive">
+        Não foi possível obter os artigos esportivos.
+      </DashboardContainer>
+    )
+  }
 
   return (
     <>
@@ -56,8 +64,11 @@ export default async function ListSportsItems() {
             <TableRow>
               <TableHead>Imagem</TableHead>
               <TableHead>Titulo</TableHead>
-              <TableHead>Categoria</TableHead>
+              <TableHead>Marca</TableHead>
+              <TableHead>Preço</TableHead>
+              <TableHead>Ano</TableHead>
               <TableHead>Quantidade</TableHead>
+              <TableHead>Categoria</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
@@ -69,9 +80,11 @@ export default async function ListSportsItems() {
                 </TableCell>
 
                 <TableCell>{sportsItem.name}</TableCell>
+                <TableCell>{sportsItem.brand}</TableCell>
+                <TableCell>{sportsItem.price}</TableCell>
+                <TableCell>{sportsItem.year}</TableCell>
                 <TableCell>{sportsItem.amount}</TableCell>
                 <TableCell>{sportsItem.category.name}</TableCell>
-                {/* demais propriedades de sportsItemType */}
 
                 <TableCell className="flex justify-end gap-2">
                   <DialogInformationSportsItem id={sportsItem.id}>

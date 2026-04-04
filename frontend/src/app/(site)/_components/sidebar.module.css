@@ -20,3 +20,7 @@
     height: 34px;
     background-color: orange;
 }
+
+.selectedButton {
+    background-color: white;
+}
