@@ -12,7 +12,6 @@ interface Props {
 
 export default function SidebarButtons({ selected, selection }: Props) {
     const [category, setCategory] = useState<categoryType[]>([]);
-    const [active, setActive] = useState<boolean>(false);
 
     useEffect(() => {
         async function getCategory() {
@@ -36,10 +35,15 @@ export default function SidebarButtons({ selected, selection }: Props) {
             <div
                 key={categories.id}
                 onClick={() => {
-                    selection(categories.id)
-                    setActive(!active);
+                    if (selected === categories.id) {
+                        selection('');
+                    } else {
+                        selection(categories.id);
+                    }
+                    console.log(selected)
+                    console.log(categories.id)
                 }}
-                className={(selected == categories.id) && !active ?
+                className={selected === categories.id ?
                     styles.selectedButton : ''}>{categories.name}</div>
         ))}
     </div>

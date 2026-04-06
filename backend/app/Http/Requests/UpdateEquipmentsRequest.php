@@ -22,7 +22,7 @@ class UpdateEquipmentsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['sometimes', 'min:3', 'max:40'],
+            'name' => ['sometimes', 'min:3', 'max:80'],
             'brand' => ['sometimes', 'min:3', 'max:40'],
             'price' => ['sometimes', 'decimal:2'],
             'year' => ['sometimes', 'integer'],

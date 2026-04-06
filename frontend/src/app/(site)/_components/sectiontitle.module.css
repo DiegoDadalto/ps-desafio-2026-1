@@ -1,8 +1,8 @@
 .sectionTitle {
     display: flex;
     align-items: center;
-    justify-content: center;
     margin: 10px;
+    margin-left: 30px;
     color: black;
     font-size: 30px;
 }

@@ -1,7 +1,9 @@
 'use server'
 
 import { api } from '@/services/api'
+import { sportsItemType } from '@/types/sportsItem';
 import { revalidatePath } from 'next/cache'
+import { Dispatch, SetStateAction } from 'react';
 
 export async function createSportsItem(form: FormData) {
     const res = await api('POST', '/equipments', { data: form });
@@ -31,4 +33,16 @@ export async function destroySportsItem(id: string) {
     }
 
     return JSON.stringify(res);
+}
+
+export async function handleBuy(id: string, item: sportsItemType) {
+    const { response, error } = await api('PUT', `/equipments/${id}`, { data: { amount: item.amount - 1 } });
+    console.log("Resposta da API:", response)
+    console.log(`Erro da API: ${error}`)
+
+    if (response) {
+        console.error(error?.message);
+    }
+
+    return JSON.stringify(response);
 }

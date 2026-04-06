@@ -6,7 +6,6 @@ import SidebarButtons from "./SidebarButtons";
 
 export default function Shop() {
     const [selectedButton, setSelectedButton] = useState('');
-    const [active, setActive] = useState(null);
 
     return <div className={styles.shop}>
         <SidebarButtons selected={selectedButton} selection={setSelectedButton} />

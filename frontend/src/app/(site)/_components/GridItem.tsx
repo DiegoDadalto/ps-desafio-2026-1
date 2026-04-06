@@ -1,24 +1,37 @@
 import Image from "next/image";
 import styles from './griditem.module.css'
 import { sportsItemType } from "@/types/sportsItem";
+import { api } from "@/services/api";
+import { useEffect, useState } from "react";
+import { handleBuy } from "@/actions/sportsItem";
 
 export default function GridItem(props: sportsItemType) {
+    const [sportsItem, setSportsItem] = useState<number>(props.amount);
+
+    async function buttonClick() {
+        const res = await handleBuy(props.id, { ...props, amount: sportsItem });
+        if (res) {
+            setTimeout(() => { setSportsItem(x => x - 1) }, 2000)
+        }
+    }
+
     return <div className={styles.gridItem}>
         <Image src={props.image}
             alt={props.name}
             width={300}
-            height={180} />
+            height={180}
+            className={styles.productImage} />
         <div className={styles.productInfo}>
             <div className={styles.nameAmount}>
                 <p className={styles.productName}>{props.name}</p>
-                <p className={styles.amount}>Em estoque: {props.amount}</p>
+                <p className={styles.amount}>Em estoque: {sportsItem}</p>
             </div>
             <p className={styles.price}>R${props.price.toLocaleString()}</p>
         </div>
         <div className={styles.buttons}>
             <button className={styles.expandInfo}>Informações</button>
             {(props.amount > 0) ? (
-                <button className={styles.addToCart}>Comprar</button>
+                <button className={styles.addToCart} onClick={buttonClick}>Comprar</button>
             ) : (
                 <button className={styles.outOfStock} disabled>Esgotado</button>
             )}
