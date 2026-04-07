@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styles from './griditem.module.css'
 import { sportsItemType } from "@/types/sportsItem";
-import { api } from "@/services/api";
-import { useEffect, useState } from "react";
+//import { api } from "@/services/api";
+import { useState } from "react";
 import { handleBuy } from "@/actions/sportsItem";
 
 export default function GridItem(props: sportsItemType) {
@@ -15,6 +15,10 @@ export default function GridItem(props: sportsItemType) {
         }
     }
 
+    if (sportsItem < 15) {
+
+    }
+
     return <div className={styles.gridItem}>
         <Image src={props.image}
             alt={props.name}
@@ -24,9 +28,12 @@ export default function GridItem(props: sportsItemType) {
         <div className={styles.productInfo}>
             <div className={styles.nameAmount}>
                 <p className={styles.productName}>{props.name}</p>
-                <p className={styles.amount}>Em estoque: {sportsItem}</p>
+                <p className={styles.amount}>Em estoque: <span className={(sportsItem < 15) ? styles.limited : ""}>{sportsItem}</span></p>
             </div>
-            <p className={styles.price}>R${props.price.toLocaleString()}</p>
+            <p className={styles.price}>R${props.price.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}</p>
         </div>
         <div className={styles.buttons}>
             <button className={styles.expandInfo}>Informações</button>

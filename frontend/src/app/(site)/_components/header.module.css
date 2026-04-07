@@ -2,7 +2,7 @@ div.header {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: orange;
+    background-color: rgb(173, 0, 207);
     height: 8vh;
     width: 100%;
 }
