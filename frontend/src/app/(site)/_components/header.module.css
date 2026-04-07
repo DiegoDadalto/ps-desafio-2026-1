@@ -1,10 +1,50 @@
 div.header {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    padding-left: 50px;
+    gap: 20px;
     background-color: rgb(173, 0, 207);
     height: 8vh;
     width: 100%;
+    color: black;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+}
+
+.config,
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(91, 211, 36);
+    border-radius: 20px;
+    padding-right: 10px;
+}
+
+.configOptions {
+    position: relative;
+}
+
+.configMenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: 17px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.configMenu::before {
+    content: "";
+    background-color: white;
+    width: 5px;
+    height: 5px;
 }
 
 .logo:hover {

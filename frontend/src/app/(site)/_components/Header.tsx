@@ -13,18 +13,30 @@ export default function Header() {
             width={50}
             height={50}
             alt="Logo" />
-        <SearchBar />
-        <Image
-            className={styles.clickable}
-            src={settings}
-            width={40}
-            height={40}
-            alt="Settings" />
-        <Image
-            className={styles.clickable}
-            src={user}
-            width={40}
-            height={40}
-            alt="User" />
+
+        <div className={styles.configOptions}>
+            <div className={styles.config}>
+                <Image
+                    className={styles.clickable}
+                    src={settings}
+                    width={40}
+                    height={40}
+                    alt="Settings" />
+                <p>Configurações</p>
+            </div>
+            <div className={styles.configMenu}>
+                Modo Noturno
+                <div className={styles.toggleDarkMode}></div>
+            </div>
+        </div>
+        <div className={styles.user}>
+            <Image
+                className={styles.clickable}
+                src={user}
+                width={40}
+                height={40}
+                alt="User" />
+            <p>Usuário</p>
+        </div>
     </div>
 }
